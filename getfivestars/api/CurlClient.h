@@ -2,6 +2,7 @@
 #define GETFIVESTARS_API_CURL_CLIENT_H
 
 #include "Client.h"
+#include <string>
 #include <curl/curl.h>
 
 namespace getfivestars {

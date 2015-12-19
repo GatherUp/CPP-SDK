@@ -1,2 +1,2 @@
-main: main.cpp getfivestars/api/Request.cpp getfivestars/api/AuthToken.cpp getfivestars/api/Response.cpp getfivestars/api/Client.cpp getfivestars/api/CurlClient.cpp
-	g++ main.cpp -o main getfivestars/api/Request.cpp getfivestars/api/AuthToken.cpp getfivestars/api/Response.cpp getfivestars/api/Client.cpp getfivestars/api/CurlClient.cpp -lcurl -lcrypto
+main: main.cpp getfivestars/api/Json.cpp getfivestars/api/Request.cpp getfivestars/api/AuthToken.cpp getfivestars/api/Response.cpp getfivestars/api/Client.cpp getfivestars/api/CurlClient.cpp
+	g++ main.cpp -o main getfivestars/api/Json.cpp getfivestars/api/Request.cpp getfivestars/api/AuthToken.cpp getfivestars/api/Response.cpp getfivestars/api/Client.cpp getfivestars/api/CurlClient.cpp -lcurl -lcrypto -ljson

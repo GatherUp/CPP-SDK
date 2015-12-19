@@ -1,6 +1,7 @@
 #include "getfivestars/api/Request.h"
 #include "getfivestars/api/AuthToken.h"
 #include "getfivestars/api/CurlClient.h"
+#include "getfivestars/api/Json.h"
 #include <iostream>
 
 int main() {
@@ -14,11 +15,14 @@ int main() {
 
     getfivestars::api::CurlClient client(&request);
     getfivestars::api::Response response = client.sendRequest();
-    
-    getfivestars::api::Params params = response.getResponse();
-    
-    for (getfivestars::api::Params::iterator iterator = params.begin(); iterator != params.end(); iterator++) {
-        std::cout << iterator->first << " " << iterator->second << "\n";
+
+    if (response.getStatus()) {
+        getfivestars::api::Params params = response.getResponse();
+        for (getfivestars::api::Params::iterator iterator = params.begin(); iterator != params.end(); iterator++) {
+            std::cout << iterator->first << " " << iterator->second << "\n";
+        }
+    } else {
+        std::cout << response.getErrorCode() << " " << response.getErrorMessage() << "\n";
     }
 
     return 0;
