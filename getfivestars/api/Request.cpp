@@ -1,6 +1,6 @@
 #include "Request.h"
 
-getfivestars::api::Request::Request(getfivestars::api::Params request, std::string action) {
+getfivestars::api::Request::Request(std::string action, getfivestars::api::Params request) {
     this->request = request;
     this->action = action;
 }

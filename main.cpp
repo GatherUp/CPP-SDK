@@ -1,28 +1,29 @@
-#include "getfivestars/api/Request.h"
+#include "getfivestars/api/JsonRequest.h"
 #include "getfivestars/api/AuthToken.h"
 #include "getfivestars/api/CurlClient.h"
 #include "getfivestars/api/Json.h"
 #include <iostream>
 
-int main() {
-    getfivestars::api::Request request("/business/create");
-    getfivestars::api::AuthToken auth_token("324234", "5325325");
+using namespace std;
+using namespace getfivestars;
+using namespace getfivestars::api;
 
-    request.set("param1", "val1");
-    request.set("param2", "val2");
+int main() {
+    JsonRequest request("/business/create", "{'param1':'value1', 'param2':'value2'}");
+    AuthToken auth_token("324234", "5325325");
 
     auth_token.signRequest(&request);
 
-    getfivestars::api::CurlClient client(&request);
-    getfivestars::api::Response response = client.sendRequest();
+    CurlClient client(&request);
+    Response response = client.sendRequest();
 
     if (response.getStatus()) {
-        getfivestars::api::Params params = response.getResponse();
-        for (getfivestars::api::Params::iterator iterator = params.begin(); iterator != params.end(); iterator++) {
-            std::cout << iterator->first << " " << iterator->second << "\n";
+        Params params = response.getResponse();
+        for (Params::iterator iterator = params.begin(); iterator != params.end(); iterator++) {
+            cout << iterator->first << " " << iterator->second << "\n";
         }
     } else {
-        std::cout << response.getErrorCode() << " " << response.getErrorMessage() << "\n";
+        cout << response.getErrorCode() << " " << response.getErrorMessage() << "\n";
     }
 
     return 0;

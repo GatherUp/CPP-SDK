@@ -14,7 +14,7 @@ namespace getfivestars {
             std::string action;
         public:
             Request(std::string);
-            Request(getfivestars::api::Params, std::string);
+            Request(std::string, getfivestars::api::Params);
             void set(std::string, std::string);
             std::string get(std::string);
             std::map<std::string, std::string> getParameters();
